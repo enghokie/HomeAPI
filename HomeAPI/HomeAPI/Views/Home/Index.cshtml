@@ -1,0 +1,40 @@
+﻿<div id="body">
+<ul id="devices"></ul>
+<form id="saveDeviceForm" method="post">
+<h3>Create a new Device</h3>
+<p>
+    <label for="DeviceId">Device Id:</label>
+    <input type="text" name="Id" />
+</p>
+<p>
+    <label for="DeviceName">Device Name:</label>
+    <input type="text" name="Name" />
+</p>
+<input type="button" id="saveDevice" value="Save" />
+</form>
+</div>
+
+@section scripts{
+<script type="text/javascript">
+$(function()
+{
+        $.getJSON('/api/device', function(devicesJsonPayload)
+        {
+            $(devicesJsonPayload).each(function(i, item)
+            {
+                $('#devices').append('<li>' + item.Name + '</li>');
+            });
+        });
+});
+
+$('#saveDevice').click(function () {
+    $.post("api/device",
+          $("#saveDeviceForm").serialize(),
+          function (value) {
+              $('#devices').append('<li>' + value.Name + '</li>');
+          },
+          "json"
+    );
+});
+</script>
+}
