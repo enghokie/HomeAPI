@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using HomeAPI.Models;
 
+//This class serves as the data storage space. It is just a list of Device items that are regenerated from the cache
+
 namespace HomeAPI.Services
 {
     public class DeviceRepository
@@ -52,8 +54,36 @@ namespace HomeAPI.Services
             {
                 try
                 {
+                    var currentData = ((Device[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
+                    currentData.Add(device);                                    //add the new device
+                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        public bool DeleteDevice(Device device)
+        {
+            var ctx = HttpContext.Current;
+
+            if (ctx != null)
+            {
+                try
+                {
                     var currentData = ((Device[])ctx.Cache[CacheKey]).ToList();
-                    currentData.Add(device);
+                    for (int i = 0; i < currentData.Count; i++)
+                        if (device.Name == currentData.ElementAt(i).Name && device.Id == currentData.ElementAt(i).Id) //search for the matching device to delete
+                            currentData.RemoveAt(i);
+                    for (int i = 0; i < currentData.Count; i++)
+                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).Name);  //this serves as a check to see if the item was deleted
                     ctx.Cache[CacheKey] = currentData.ToArray();
 
                     return true;

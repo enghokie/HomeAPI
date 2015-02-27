@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+//This is our controller. It will respond to GET, POST, DELETE...
+
 namespace HomeAPI.Controllers
 {
     public class DeviceController : ApiController
@@ -29,6 +31,15 @@ namespace HomeAPI.Controllers
             this.deviceRepository.SaveDevice(device);
 
             var response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.Created, device);
+
+            return response;
+        }
+
+        public HttpResponseMessage Delete(Device device)
+        {
+            this.deviceRepository.DeleteDevice(device);
+
+            var response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.OK, device);
 
             return response;
         }

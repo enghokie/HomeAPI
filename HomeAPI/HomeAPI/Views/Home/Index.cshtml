@@ -12,29 +12,75 @@
 </p>
 <input type="button" id="saveDevice" value="Save" />
 </form>
+
+<form id="deleteDeviceForm" method="delete">
+<h3>Delete a Device</h3>
+<p>
+    <label for="DeviceId">Device Id:</label>
+    <input type="text" name="Id" />
+</p>
+<p>
+    <label for="DeviceName">Device Name:</label>
+    <input type="text" name="Name" />
+</p>
+<input type="button" id="deleteDevice" value="Delete" />
+</form>
 </div>
 
 @section scripts{
 <script type="text/javascript">
-$(function()
-{
-        $.getJSON('/api/device', function(devicesJsonPayload)
-        {
-            $(devicesJsonPayload).each(function(i, item)
-            {
+$(function () {
+    $.ajax({
+        type: 'GET',
+        url: 'api/device',
+        dataType: "json",
+        success: function (data) {
+            $(data).each(function (i, item) {
                 $('#devices').append('<li>' + item.Name + '</li>');
+  
             });
-        });
+        },
+        error: function () {
+            alert('error handing here');
+        }
+    });
 });
 
 $('#saveDevice').click(function () {
-    $.post("api/device",
-          $("#saveDeviceForm").serialize(),
-          function (value) {
-              $('#devices').append('<li>' + value.Name + '</li>');
-          },
-          "json"
-    );
+    var datastring = $("#saveDeviceForm").serialize();
+    $.ajax({
+        type: 'POST',
+        url: 'api/device',
+        data: datastring,
+        dataType: "json",
+        success: function (data) {
+            $('#devices').append('<li>' + data.Name + '</li>');
+        },
+        error: function () {
+            alert('error handing here');
+        }
+    });
+});
+
+$('#deleteDevice').click(function () {
+    var datastring = $("#deleteDeviceForm").serialize();
+    $.ajax({
+        type: 'DELETE',
+        url: 'api/device',
+        data: datastring,
+        dataType:"json",
+        success: function (data) {
+            var str = datastring.split("&");
+            var id = (str[0].split("Id="));
+            var name = str[1].split("Name=");
+            console.log(id[1]);
+            console.log(name[1]);
+            document.getElementById(name[1]).remove();
+        },
+        error: function () {
+            alert('error handling here');
+        }
+    });
 });
 </script>
 }
