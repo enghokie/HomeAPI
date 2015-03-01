@@ -1,11 +1,14 @@
-div id="body">
+<div id="body">
 <ul id="users"></ul>
-<ul id="passwords"></ul>
 <form id="saveUserForm" method="post">
-<h3>Add a new user</h3>
+<h3>Add a New User</h3>
 <p>
     <label for="User Name">User Name:</label>
     <input type="text" name="Name" />
+</p>
+<p>
+    <label for="House Name">House Name:</label>
+    <input type="text" name="HouseName" />
 </p>
 <p>
     <label for="User Password">Password:</label>
@@ -37,8 +40,8 @@ $(function () {
         dataType: "json",
         success: function (data) {
             $(data).each(function (i, item) {
-                $('#users').append('<li>' + item.Name + '</li>');
-                $('#passwords').append('<li>' + item.Password + '</li>');
+                $('#users').append('<li>' + "User: " + item.Name + "  (Password: " + item.Password + ')' + '<ul>' + '<li>'
+                    + "House: " + item.HouseName + '</li>' + '</ul>' + '</li>');
             });
         },
         error: function () {
@@ -55,8 +58,8 @@ $('#register').click(function () {
         data: datastring,
         dataType: "json",
         success: function (data) {
-            $('#users').append('<li>' + data.Name + '</li>');
-            $('#passwords').append('<li>' + data.Password + '</li>');
+            $('#users').append('<li>' + "User: " + data.Name + "  (Password" + data.Password + ')' + '<ul>' + '<li>'
+                + "House: " + data.HouseName + '</li>' + '</ul>' + '</li>');
         },
         error: function () {
             alert('error handing here');
@@ -75,8 +78,10 @@ $('#delete').click(function () {
             var str = datastring.split("&");
             var name = (str[0].split("Name="));
             var password = str[1].split("Password=");
+            var house = str[2].split("HouseName=");
             console.log(name[0]);
             console.log(password[0]);
+            console.log(house[0]);
             document.getElementById(name[0]).remove();
         },
         error: function () {
