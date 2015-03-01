@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,8 +40,9 @@ namespace HomeAPI.Services
             {
             new Device
                 {
-                    Id = 0,
-                    Name = "Placeholder"
+                    DeviceId = 0,
+                    DeviceName = "Placeholder",
+                    RoomId = 0
                 }
             };
         }
@@ -80,10 +81,10 @@ namespace HomeAPI.Services
                 {
                     var currentData = ((Device[])ctx.Cache[CacheKey]).ToList();
                     for (int i = 0; i < currentData.Count; i++)
-                        if (device.Name == currentData.ElementAt(i).Name && device.Id == currentData.ElementAt(i).Id) //search for the matching device to delete
+                        if (device.DeviceName == currentData.ElementAt(i).DeviceName && device.DeviceId == currentData.ElementAt(i).DeviceId) //search for the matching device to delete
                             currentData.RemoveAt(i);
                     for (int i = 0; i < currentData.Count; i++)
-                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).Name);  //this serves as a check to see if the item was deleted
+                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).DeviceName);  //this serves as a check to see if the item was deleted
                     ctx.Cache[CacheKey] = currentData.ToArray();
 
                     return true;
