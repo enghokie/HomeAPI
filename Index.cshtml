@@ -4,7 +4,7 @@
 <h3>Add a New User</h3>
 <p>
     <label for="User Name">User Name:</label>
-    <input type="text" name="Name" />
+    <input type="text" name="UserName" />
 </p>
 <p>
     <label for="House Name">House Name:</label>
@@ -21,7 +21,7 @@
 <h3>Delete a User</h3>
 <p>
     <label for="User Name">User Name:</label>
-    <input type="text" name="Name" />
+    <input type="text" name="UserName" />
 </p>
 <p>
     <label for="Password">Password:</label>
@@ -40,8 +40,8 @@ $(function () {
         dataType: "json",
         success: function (data) {
             $(data).each(function (i, item) {
-                $('#users').append('<li>' + "User: " + item.Name + "  (Password: " + item.Password + ')' + '<ul>' + '<li>'
-                    + "House: " + item.HouseName + '</li>' + '</ul>' + '</li>');
+                $('#users').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')' + '<ul>' + '<li>'
+                    + "House: " + item.MyHouses.HouseName + '</li>' + '</ul>' + '</li>');
             });
         },
         error: function () {
@@ -58,8 +58,8 @@ $('#register').click(function () {
         data: datastring,
         dataType: "json",
         success: function (data) {
-            $('#users').append('<li>' + "User: " + data.Name + "  (Password" + data.Password + ')' + '<ul>' + '<li>'
-                + "House: " + data.HouseName + '</li>' + '</ul>' + '</li>');
+            $('#users').append('<li>' + "User: " + data.UserName + "  (Password: " + data.Password + ')' + '<ul>' + '<li>'
+                + "House: " + data.MyHouses.HouseName + '</li>' + '</ul>' + '</li>');
         },
         error: function () {
             alert('error handing here');
