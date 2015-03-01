@@ -38,8 +38,9 @@ namespace HomeAPI.Services
             {
             new User
                 {
-                    Name = "Placeholder",
-                    Password = "Placeholder"
+                    UserName = "Placeholder",
+                    Password = "Placeholder",
+                    MyHouses = new House[]{}
                 }
             };
         }
@@ -53,7 +54,14 @@ namespace HomeAPI.Services
                 try
                 {
                     var currentData = ((User[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
-                    currentData.Add(user);                                    //add the new user
+                    HouseRepository tempRepo = new HouseRepository();
+                    user.MyHouses = tempRepo.GetAllHouses();
+                    currentData.Add(user);                                      //add the new user
+                    Console.Write(user.UserName);
+                    for (int i = 0; i < user.MyHouses.Count(); i++)
+                    {
+                        Console.Write(user.MyHouses[i].HouseName);
+                    }
                     ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
 
                     return true;
@@ -78,13 +86,13 @@ namespace HomeAPI.Services
                 {
                     var currentData = ((User[])ctx.Cache[CacheKey]).ToList();
                     for (int i = 0; i < currentData.Count; i++)
-                        if (user.Name == currentData.ElementAt(i).Name && user.Name == currentData.ElementAt(i).Name) //search for the matching name to delete
+                        if (user.UserName == currentData.ElementAt(i).UserName && user.UserName == currentData.ElementAt(i).UserName) //search for the matching name to delete
                         {
                             if (user.Password == currentData.ElementAt(i).Password && user.Password == currentData.ElementAt(i).Password)
                                 currentData.RemoveAt(i);
                         }
                     for (int i = 0; i < currentData.Count; i++)
-                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).Name);  //this serves as a check to see if the item was deleted
+                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).UserName);  //this serves as a check to see if the item was deleted
                     ctx.Cache[CacheKey] = currentData.ToArray();
 
                     return true;
