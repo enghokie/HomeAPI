@@ -57,11 +57,6 @@ namespace HomeAPI.Services
                     RoomRepository tempRepo = new RoomRepository();
                     house.MyRooms = tempRepo.GetAllRooms();
                     currentData.Add(house);                                    //add the new house
-                    Console.Write(house.HouseName);
-                    for (int i = 0; i < house.MyRooms.Count(); i++)
-                    {
-                        Console.Write(house.MyRooms[i].RoomName);
-                    }
                     ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
 
                     return true;
@@ -107,4 +102,19 @@ namespace HomeAPI.Services
         }
 
     }
+
+    class PrintHouse
+    {
+        static void Main()
+        {
+            HouseRepository HouseRepo = new HouseRepository();
+            House[] houses = new House[] { };
+            houses = HouseRepo.GetAllHouses();
+            Console.Write(houses[0].HouseName);
+            for (int i = 0; i < houses[0].MyRooms.Count(); i++)
+            {
+                Console.Write(houses[0].MyRooms[i].RoomName);
+            }
+        }
+    } 
 }

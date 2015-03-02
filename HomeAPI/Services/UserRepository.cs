@@ -58,6 +58,7 @@ namespace HomeAPI.Services
                     user.MyHouses = tempRepo.GetAllHouses();
                     currentData.Add(user);                                      //add the new user
                     Console.Write(user.UserName);
+                    Console.Write(user.MyHouses[0].HouseName);
                     for (int i = 0; i < user.MyHouses.Count(); i++)
                     {
                         Console.Write(user.MyHouses[i].HouseName);
@@ -107,4 +108,19 @@ namespace HomeAPI.Services
             return false;
         }
     }
+
+    class PrintUser
+    {
+        static void Main()
+        {
+            UserRepository UserRepo = new UserRepository();
+            User[] users = new User[] { };
+            users = UserRepo.GetAllUsers();
+            Console.Write(users[0].UserName);
+            for (int i = 0; i < users[0].MyHouses.Count(); i++)
+            {
+                Console.Write(users[0].MyHouses[i].HouseName);
+            }
+        }
+    } 
 }

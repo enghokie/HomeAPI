@@ -1,93 +1,120 @@
 ﻿<div id="body">
-<ul id="users"></ul>
-<form id="saveUserForm" method="post">
-<h3>Add a New User</h3>
-<p>
-    <label for="User Name">User Name:</label>
-    <input type="text" name="UserName" />
-</p>
-<p>
-    <label for="House Name">House Name:</label>
-    <input type="text" name="HouseName" />
-</p>
-<p>
-    <label for="User Password">Password:</label>
-    <input type="text" name="Password" />
-</p>
-<input type="button" id="register" value="Register" />
-</form>
+    <ul id="users"></ul>
+    <form id="saveUserForm" method="post">
+        <h3>Add a New User</h3>
+        <p>
+            <label for="User Name">User Name:</label>
+            <input type="text" name="UserName" />
+        </p>
+        <p>
+            <label for="House Name">House Name:</label>
+            <input type="text" name="HouseName" />
+        </p>
+        <p>
+            <label for="User Password">Password:</label>
+            <input type="text" name="Password" />
+        </p>
+        <input type="button" id="register" value="Register" />
+    </form>
 
-<form id="deleteUserForm" method="delete">
-<h3>Delete a User</h3>
-<p>
-    <label for="User Name">User Name:</label>
-    <input type="text" name="UserName" />
-</p>
-<p>
-    <label for="Password">Password:</label>
-    <input type="text" name="Password" />
-</p>
-<input type="button" id="delete" value="Delete" />
-</form>
+    <form id="deleteUserForm" method="delete">
+        <h3>Delete a User</h3>
+        <p>
+            <label for="User Name">User Name:</label>
+            <input type="text" name="UserName" />
+        </p>
+        <p>
+            <label for="Password">Password:</label>
+            <input type="text" name="Password" />
+        </p>
+        <input type="button" id="delete" value="Delete" />
+    </form>
 </div>
 
 @section scripts{
-<script type="text/javascript">
-$(function () {
-    $.ajax({
-        type: 'GET',
-        url: 'api/user',
-        dataType: "json",
-        success: function (data) {
-            $(data).each(function (i, item) {
-                $('#users').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')' + '<ul>' + '<li>'
-                    + "House: " + item.MyHouses.HouseName + '</li>' + '</ul>' + '</li>');
+    <script type="text/javascript">
+        $(function () { $(data).each(function (i, item) {
+            $.ajax({
+                type: 'GET',
+                url: 'api/house',
+                dataType: "json",
+                success: function (item) {
+                    $('#users').append('<ul>' + '<li>' + "House: " + item.HouseName + '</li>' + '</ul>' + '</li>');
+                    alert('got house ' + item.HouseName);
+                },
+                error: function () {
+                    alert('error handing GET request');
+                }
             });
-        },
-        error: function () {
-            alert('error handing here');
-        }
-    });
-});
 
-$('#register').click(function () {
-    var datastring = $("#saveUserForm").serialize();
-    $.ajax({
-        type: 'POST',
-        url: 'api/user',
-        data: datastring,
-        dataType: "json",
-        success: function (data) {
-            $('#users').append('<li>' + "User: " + data.UserName + "  (Password: " + data.Password + ')' + '<ul>' + '<li>'
-                + "House: " + data.MyHouses.HouseName + '</li>' + '</ul>' + '</li>');
-        },
-        error: function () {
-            alert('error handing here');
-        }
-    });
-});
+            $.ajax({
+                type: 'GET',
+                url: 'api/user',
+                dataType: "json",
+                success: function (item) {
+                    $('#users').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')');
+                    alert('got item ' + item.UserName + ' got Password ' + item.Password);
+                },
+                error: function () {
+                    alert('error handing GET request');
+                }
+            });
+        });
+        })
 
-$('#delete').click(function () {
-    var datastring = $("#deleteUserForm").serialize();
-    $.ajax({
-        type: 'DELETE',
-        url: 'api/user',
-        data: datastring,
-        dataType:"json",
-        success: function (data) {
-            var str = datastring.split("&");
-            var name = (str[0].split("Name="));
-            var password = str[1].split("Password=");
-            var house = str[2].split("HouseName=");
-            console.log(name[0]);
-            console.log(password[0]);
-            console.log(house[0]);
-            document.getElementById(name[0]).remove();
-        },
-        error: function () {
-            alert('error handling here');
-        }
-    });
-});
-</script>
+        $('#register').click(function () {
+            var datastring = $("#saveUserForm").serialize();
+            $.ajax({
+                type: 'POST',
+                url: 'api/house',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    $('#users').append('<ul>' + '<li>' + "House: " + data.HouseName + '</li>' + '</ul>' + '</li>');
+                    alert('Posted ' + data.HouseName);
+                },
+                error: function () {
+                    alert('error handing POST request');
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/user',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    $('#users').append('<li>' + "User: " + data.UserName + "  (Password: " + data.Password + ')');
+                    alert('Posted ' + data.UserName + ' and ' + data.Password);
+                },
+                error: function () {
+                    alert('error handing POST request');
+                }
+            });
+
+        });
+
+        $('#delete').click(function () {
+            var datastring = $("#deleteUserForm").serialize();
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/user',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    var str = datastring.split("&");
+                    var name = (str[0].split("Name="));
+                    var password = str[1].split("Password=");
+                    var house = str[2].split("HouseName=");
+                    console.log(name[0]);
+                    console.log(password[0]);
+                    console.log(house[0]);
+                    document.getElementById(name[0]).remove();
+                },
+                error: function () {
+                    alert('error handling for DELETE request');
+                }
+            });
+        });
+    </script>
 }
