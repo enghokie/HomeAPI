@@ -1,0 +1,205 @@
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\HomeAPI.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\HomeAPI.pdb
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Antlr3.Runtime.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\EntityFramework.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Microsoft.Data.Edm.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Microsoft.Data.OData.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Microsoft.Web.Infrastructure.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Newtonsoft.Json.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Net.Http.Formatting.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Spatial.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Helpers.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.OData.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.Tracing.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.WebHost.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Mvc.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Optimization.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Providers.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Razor.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.WebPages.Deployment.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.WebPages.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.WebPages.Razor.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\WebGrease.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\EntityFramework.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Newtonsoft.Json.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Net.Http.Formatting.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Helpers.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.WebHost.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Mvc.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Razor.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.WebPages.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.WebPages.Deployment.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.WebPages.Razor.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.Tracing.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Web.Http.OData.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Microsoft.Data.Edm.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\Microsoft.Data.OData.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\System.Spatial.xml
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\de\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\es\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\fr\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\it\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ja\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ko\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ru\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\de\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\es\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\fr\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\it\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ja\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ko\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ru\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\de\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\es\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\fr\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\it\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ja\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ko\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\ru\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\zh-Hans\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\bin\zh-Hant\System.Spatial.resources.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\obj\Debug\HomeAPI.csprojResolveAssemblyReference.cache
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\obj\Debug\HomeAPI.dll
+c:\users\brian\documents\visual studio 2012\Projects\HomeAPI\HomeAPI\obj\Debug\HomeAPI.pdb
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\HomeAPI.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\HomeAPI.pdb
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Antlr3.Runtime.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\EntityFramework.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Microsoft.Data.Edm.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Microsoft.Data.OData.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Newtonsoft.Json.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Spatial.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Helpers.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.OData.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.Tracing.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Mvc.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Optimization.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Providers.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Razor.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.WebPages.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\WebGrease.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\EntityFramework.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Newtonsoft.Json.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Helpers.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Mvc.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Razor.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.WebPages.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.Tracing.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Web.Http.OData.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Microsoft.Data.Edm.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\Microsoft.Data.OData.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\System.Spatial.xml
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\de\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\es\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\fr\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\it\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ja\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ko\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\ru\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\obj\Debug\HomeAPI.csprojResolveAssemblyReference.cache
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\obj\Debug\HomeAPI.dll
+C:\Users\Brian\Documents\GitHub\HomeAPI\HomeAPI\HomeAPI\obj\Debug\HomeAPI.pdb
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\HomeAPI.dll.config
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\HomeAPI.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\HomeAPI.pdb
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Antlr3.Runtime.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\EntityFramework.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Microsoft.Data.Edm.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Microsoft.Data.OData.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Newtonsoft.Json.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Spatial.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Helpers.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Http.OData.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Http.Tracing.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Mvc.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Optimization.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Providers.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Razor.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.WebPages.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\WebGrease.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\EntityFramework.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Newtonsoft.Json.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Helpers.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Mvc.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Razor.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.WebPages.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Http.Tracing.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Web.Http.OData.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Microsoft.Data.Edm.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\Microsoft.Data.OData.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\System.Spatial.xml
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\de\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\es\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\fr\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\it\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ja\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ko\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\ru\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\obj\Debug\HomeAPI.csprojResolveAssemblyReference.cache
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\obj\Debug\HomeAPI.dll
+C:\Users\Braedon\Desktop\Large Software Dev\HomeAPI\HomeAPI\obj\Debug\HomeAPI.pdb
