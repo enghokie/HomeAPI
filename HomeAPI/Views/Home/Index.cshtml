@@ -1,5 +1,5 @@
 ﻿<div id="body">
-    <ul id="users"></ul>
+    <ul id="users" style="margin-right: 500px; float:right"></ul>
     <form id="saveUserForm" method="post">
         <h3>Add a New User</h3>
         <p>
@@ -7,16 +7,59 @@
             <input type="text" name="UserName" />
         </p>
         <p>
+            <label for="User Password">Password:</label>
+            <input type="text" name="Password" />
+        </p>
+        <input type="button" id="register" value="Register User" />
+    </form>
+    <form id="saveHouseForm" method="post">
+        <h3>Add a New House</h3>
+        <p>
             <label for="House Name">House Name:</label>
             <input type="text" name="HouseName" />
         </p>
         <p>
-            <label for="User Password">Password:</label>
-            <input type="text" name="Password" />
+            <label for="House ID">House ID:</label>
+            <input type="text" name="HouseId" />
         </p>
-        <input type="button" id="register" value="Register" />
+        <p>
+            <label for="User Name">Add To User:</label>
+            <input type="text" name="UserName" />
+        </p>
+        <input type="button" id="addHouse" value="Add House" />
     </form>
-
+    <form id="saveRoomForm" method="post">
+        <h3>Add a New Room</h3>
+        <p>
+            <label for="Room Name">Room Name:</label>
+            <input type="text" name="RoomName" />
+        </p>
+        <p>
+            <label for="Room ID">Room ID:</label>
+            <input type="text" name="RoomId" />
+        </p>
+        <p>
+            <label for="House ID">House ID:</label>
+            <input type="text" name="HouseId" />
+        </p>
+        <input type="button" id="addRoom" value="Add Room" />
+    </form>
+    <form id="saveDeviceForm" method="post">
+        <h3>Add a New Device</h3>
+        <p>
+            <label for="Device Name">Device Name:</label>
+            <input type="text" name="DeviceName" />
+        </p>
+        <p>
+            <label for="Device ID">Device ID:</label>
+            <input type="text" name="DeviceId" />
+        </p>
+        <p>
+            <label for="Room ID">Room ID:</label>
+            <input type="text" name="RoomId" />
+        </p>
+        <input type="button" id="addDevice" value="Add Device" />
+    </form>
     <form id="deleteUserForm" method="delete">
         <h3>Delete a User</h3>
         <p>
@@ -27,7 +70,31 @@
             <label for="Password">Password:</label>
             <input type="text" name="Password" />
         </p>
-        <input type="button" id="delete" value="Delete" />
+        <input type="button" id="deleteUser" value="Delete User" />
+    </form>
+    <form id="deleteHouseForm" method="delete">
+        <h3>Delete a House</h3>
+        <p>
+            <label for="House ID">House ID:</label>
+            <input type="text" name="HouseId" />
+        </p>
+        <input type="button" id="deleteHouse" value="Delete House" />
+    </form>
+    <form id="deleteRoomForm" method="delete">
+        <h3>Delete a Room</h3>
+        <p>
+            <label for="Room ID">Room ID:</label>
+            <input type="text" name="RoomId" />
+        </p>
+        <input type="button" id="deleteRoom" value="Delete Room" />
+    </form>
+    <form id="deleteDeviceForm" method="delete">
+        <h3>Delete a Device</h3>
+        <p>
+            <label for="Device ID">Device ID:</label>
+            <input type="text" name="DeviceId" />
+        </p>
+        <input type="button" id="deleteDevice" value="Delete Device" />
     </form>
 </div>
 
@@ -43,20 +110,20 @@
                     alert('got house ' + item.HouseName);
                 },
                 error: function () {
-                    alert('error handing GET request');
+                    alert('error handling GET request');
                 }
             });
 
             $.ajax({
                 type: 'GET',
-                url: 'api/user',
+                url: 'api/users',
                 dataType: "json",
                 success: function (item) {
-                    $('#users').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')');
+                    $('#user').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')');
                     alert('got item ' + item.UserName + ' got Password ' + item.Password);
                 },
                 error: function () {
-                    alert('error handing GET request');
+                    alert('error handling GET request');
                 }
             });
         });
@@ -66,35 +133,72 @@
             var datastring = $("#saveUserForm").serialize();
             $.ajax({
                 type: 'POST',
-                url: 'api/house',
-                data: datastring,
-                dataType: "json",
-                success: function (data) {
-                    $('#users').append('<ul>' + '<li>' + "House: " + data.HouseName + '</li>' + '</ul>' + '</li>');
-                    alert('Posted ' + data.HouseName);
-                },
-                error: function () {
-                    alert('error handing POST request');
-                }
-            });
-
-            $.ajax({
-                type: 'POST',
                 url: 'api/user',
                 data: datastring,
                 dataType: "json",
                 success: function (data) {
                     $('#users').append('<li>' + "User: " + data.UserName + "  (Password: " + data.Password + ')');
-                    alert('Posted ' + data.UserName + ' and ' + data.Password);
+                    alert('Posted User ' + data.UserName + ' and ' + data.Password);
                 },
                 error: function () {
-                    alert('error handing POST request');
+                    alert('error handling User POST request');
                 }
             });
 
         });
 
-        $('#delete').click(function () {
+       $('#addHouse').click(function () {
+            var datastring = $("#saveHouseForm").serialize();
+            $.ajax({
+                type: 'POST',
+                url: 'api/house',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    $('#users').append('<ul>' + '<li>' + "House: " + data.HouseName + "  (Id: " + data.HouseId + ')' + '</li>' + '</ul>');
+                    alert('Posted House ' + data.HouseName);
+                },
+                error: function () {
+                    alert('error handling House POST request');
+                }
+            });
+       });
+
+       $('#addRoom').click(function () {
+           var datastring = $("#saveRoomForm").serialize();
+           $.ajax({
+               type: 'POST',
+               url: 'api/room',
+               data: datastring,
+               dataType: "json",
+               success: function (data) {
+                   $('#users').append('<ul>' + '<li>' + '<ul>' + '<li>' + "Room: " + data.RoomName + "  (Id: " + data.RoomId + ')' + '</li>' + '</ul>' + '</li>' + '</ul>');
+                   alert('Posted Room ' + data.RoomName);
+               },
+               error: function () {
+                   alert('error handling Room POST request');
+               }
+           });
+       });
+
+       $('#addDevice').click(function () {
+           var datastring = $("#saveDeviceForm").serialize();
+           $.ajax({
+               type: 'POST',
+               url: 'api/device',
+               data: datastring,
+               dataType: "json",
+               success: function (data) {
+                   $('#users').append('<ul>' + '<li>' + '<ul>' + '<li>' + '<ul>' + '<li>' + "Device: " + data.DeviceName + "  (Id: " + data.DeviceId + ')' + '</li>' + '</ul>' + '</li>' + '</ul>' + '</li>' + '</ul>');
+                   alert('Posted Deviced ' + data.DeviceName);
+               },
+               error: function () {
+                   alert('error handling Device POST request');
+               }
+           });
+       });
+
+        $('#deleteUser').click(function () {
             var datastring = $("#deleteUserForm").serialize();
             $.ajax({
                 type: 'DELETE',
@@ -103,13 +207,68 @@
                 dataType: "json",
                 success: function (data) {
                     var str = datastring.split("&");
-                    var name = (str[0].split("Name="));
+                    var name = (str[0].split("UserName="));
                     var password = str[1].split("Password=");
-                    var house = str[2].split("HouseName=");
                     console.log(name[0]);
                     console.log(password[0]);
-                    console.log(house[0]);
                     document.getElementById(name[0]).remove();
+                },
+                error: function () {
+                    alert('error handling for DELETE request');
+                }
+            });
+        });
+
+        $('#deleteHouse').click(function () {
+            var datastring = $("#deleteHouseForm").serialize();
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/house',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    var str = datastring.split("&");
+                    var id = str[1].split("HouseId=");
+                    console.log(id[0]);
+                    document.getElementById(id[0]).remove();
+                },
+                error: function () {
+                    alert('error handling for DELETE request');
+                }
+            });
+        });
+
+        $('#deleteRoom').click(function () {
+            var datastring = $("#deleteRoomForm").serialize();
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/room',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    var str = datastring.split("&");
+                    var id = str[1].split("RoomId=");
+                    console.log(id[0]);
+                    document.getElementById(id[0]).remove();
+                },
+                error: function () {
+                    alert('error handling for DELETE request');
+                }
+            });
+        });
+
+        $('#deleteDevice').click(function () {
+            var datastring = $("#deleteDeviceForm").serialize();
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/device',
+                data: datastring,
+                dataType: "json",
+                success: function (data) {
+                    var str = datastring.split("&");
+                    var id = str[1].split("DeviceId=");
+                    console.log(id[0]);
+                    document.getElementById(id[0]).remove();
                 },
                 error: function () {
                     alert('error handling for DELETE request');
