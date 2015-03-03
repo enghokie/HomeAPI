@@ -40,12 +40,12 @@ namespace HomeAPI.Services
                 {
                     HouseName = "PlaceHolder",
                     HouseId = 0,
-                    MyRooms = new Room[]{}
+                    MyRooms = new List<Room>()
                 }
             };
         }
 
-        public bool SaveHouse(House house)
+        public Exception SaveHouse(House house)
         {
             var ctx = HttpContext.Current;
 
@@ -54,67 +54,72 @@ namespace HomeAPI.Services
                 try
                 {
                     var currentData = ((House[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
-                    RoomRepository tempRepo = new RoomRepository();
-                    house.MyRooms = tempRepo.GetAllRooms();
-                    currentData.Add(house);                                    //add the new house
-                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+                    bool added = false;
+                    UserRepository tempRepo = new UserRepository();
+                    List<User> userList = new List<User>();
+                    userList = tempRepo.GetAllUsers().ToList();
+                    HouseRepository tempRepo2 = new HouseRepository();
+                    List<House> houseList = new List<House>();
+                    houseList = tempRepo2.GetAllHouses().ToList();
+                    
+                    for (int i = 0; i < houseList.Count; i++)
+                    {
+                        if (houseList[i].HouseId == house.HouseId)
+                            throw new Exception("Already have house: " + house.HouseName);
+                    }
 
-                    return true;
+                    for (int i = 0; i < userList.Count; i++)
+                    {
+                        if (userList[i].UserName == house.UserName)
+                        {
+                            currentData.Add(house);
+                            added = true;
+                        }                                                           //add the new device
+                    }
+                    if (!added)
+                        throw new Exception("Could not find User: " + house.UserName);
+
+                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    return false;
+                    return ex;
                 }
             }
-
-            return false;
+            return new Exception("none");
         }
 
-        public bool DeleteHouse(House house)
+        public Exception DeleteHouse(House house)
         {
             var ctx = HttpContext.Current;
-
+            bool found = false;
             if (ctx != null)
             {
                 try
                 {
                     var currentData = ((House[])ctx.Cache[CacheKey]).ToList();
                     for (int i = 0; i < currentData.Count; i++)
-                        if (house.HouseId == currentData.ElementAt(i).HouseId && house.HouseId == currentData.ElementAt(i).HouseId) //search for the matching name to delete
+                        if (house.HouseId == currentData.ElementAt(i).HouseId) //search for the matching name to delete
                         {
                            currentData.RemoveAt(i);
+                           found = true;
                         }
                     for (int i = 0; i < currentData.Count; i++)
                         System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).HouseId);  //this serves as a check to see if the item was deleted
                     ctx.Cache[CacheKey] = currentData.ToArray();
 
-                    return true;
+                    if (!found)
+                        throw new Exception("Could not find House: " + house.HouseName);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    return false;
+                    return ex;
                 }
             }
 
-            return false;
+            return new Exception("none");
         }
-
     }
-
-    class PrintHouse
-    {
-        static void Main()
-        {
-            HouseRepository HouseRepo = new HouseRepository();
-            House[] houses = new House[] { };
-            houses = HouseRepo.GetAllHouses();
-            Console.Write(houses[0].HouseName);
-            for (int i = 0; i < houses[0].MyRooms.Count(); i++)
-            {
-                Console.Write(houses[0].MyRooms[i].RoomName);
-            }
-        }
-    } 
 }

@@ -26,19 +26,21 @@ namespace HomeAPI.Controllers
 
         public HttpResponseMessage Post(User user)
         {
-            this.userRepository.SaveUser(user);
+            Exception ex = this.userRepository.SaveUser(user);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<User>(System.Net.HttpStatusCode.Created, user);
-
+            if (ex.Message == "none")
+                response = Request.CreateResponse<User>(System.Net.HttpStatusCode.Created, user);
             return response;
         }
 
         public HttpResponseMessage Delete(User user)
         {
-            this.userRepository.DeleteUser(user);
+            Exception ex = this.userRepository.DeleteUser(user);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<User>(System.Net.HttpStatusCode.OK, user);
-
+            if (ex.Message == "none")
+                response = Request.CreateResponse<User>(System.Net.HttpStatusCode.OK, user);
             return response;
         }
     }

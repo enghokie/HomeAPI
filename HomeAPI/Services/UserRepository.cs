@@ -40,12 +40,12 @@ namespace HomeAPI.Services
                 {
                     UserName = "Placeholder",
                     Password = "Placeholder",
-                    MyHouses = new House[]{}
+                    MyHouses = new List<House>()
                 }
             };
         }
 
-        public bool SaveUser(User user)
+        public Exception SaveUser(User user)
         {
             var ctx = HttpContext.Current;
 
@@ -54,73 +54,65 @@ namespace HomeAPI.Services
                 try
                 {
                     var currentData = ((User[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
-                    HouseRepository tempRepo = new HouseRepository();
-                    user.MyHouses = tempRepo.GetAllHouses();
-                    currentData.Add(user);                                      //add the new user
-                    Console.Write(user.UserName);
-                    Console.Write(user.MyHouses[0].HouseName);
-                    for (int i = 0; i < user.MyHouses.Count(); i++)
+                    UserRepository tempRepo = new UserRepository();
+                    List<User> userList = new List<User>();
+                    userList = tempRepo.GetAllUsers().ToList();
+                    for (int i = 0; i < userList.Count; i++)
                     {
-                        Console.Write(user.MyHouses[i].HouseName);
+                        if (userList[i].UserName == user.UserName)
+                            throw new Exception("Already have user: " + user.UserName);
                     }
+                    
+                    currentData.Add(user);
                     ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
-
-                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    return false;
+                    return ex;
                 }
             }
 
-            return false;
+            return new Exception("none");
         }
 
-        public bool DeleteUser(User user)
+        public Exception DeleteUser(User user)
         {
             var ctx = HttpContext.Current;
-
+            bool found = false;
             if (ctx != null)
             {
                 try
                 {
                     var currentData = ((User[])ctx.Cache[CacheKey]).ToList();
                     for (int i = 0; i < currentData.Count; i++)
+                    {
                         if (user.UserName == currentData.ElementAt(i).UserName && user.UserName == currentData.ElementAt(i).UserName) //search for the matching name to delete
                         {
                             if (user.Password == currentData.ElementAt(i).Password && user.Password == currentData.ElementAt(i).Password)
+                            {
                                 currentData.RemoveAt(i);
+                                found = true;
+                            }
+                            else
+                                throw new Exception("Invalid password for User: " + user.UserName);
                         }
+                    }
                     for (int i = 0; i < currentData.Count; i++)
                         System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).UserName);  //this serves as a check to see if the item was deleted
                     ctx.Cache[CacheKey] = currentData.ToArray();
 
-                    return true;
+                    if (!found)
+                        throw new Exception("Could not find User: " + user.UserName);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    return false;
+                    return ex;
                 }
             }
 
-            return false;
-        }
-    }
-
-    class PrintUser
-    {
-        static void Main()
-        {
-            UserRepository UserRepo = new UserRepository();
-            User[] users = new User[] { };
-            users = UserRepo.GetAllUsers();
-            Console.Write(users[0].UserName);
-            for (int i = 0; i < users[0].MyHouses.Count(); i++)
-            {
-                Console.Write(users[0].MyHouses[i].HouseName);
-            }
+            return new Exception("none");;
         }
     } 
 }

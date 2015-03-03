@@ -47,7 +47,7 @@ namespace HomeAPI.Services
             };
         }
 
-        public bool SaveDevice(Device device)
+        public Exception SaveDevice(Device device)
         {
             var ctx = HttpContext.Current;
 
@@ -56,22 +56,45 @@ namespace HomeAPI.Services
                 try
                 {
                     var currentData = ((Device[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
-                    currentData.Add(device);                                    //add the new device
-                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+                    bool added = false;
+                    var roomData = ((Room[])ctx.Cache["RoomStore"]).ToList();
+                    DeviceRepository tempRepo2 = new DeviceRepository();
+                    List<Device> deviceList = new List<Device>();
+                    deviceList = tempRepo2.GetAllDevices().ToList();
 
-                    return true;
+                    for (int i = 0; i < deviceList.Count; i++)
+                    {
+                        if (deviceList[i].DeviceId == device.DeviceId)
+                            throw new Exception("Already have device: " + device.DeviceName);
+                    }
+
+                    for (int i = 0; i < roomData.Count; i++)
+                    {
+                        if (roomData.ElementAt(i).RoomId == device.RoomId)
+                        {
+                            //roomData.ElementAt(i).MyDevices.Add(device);
+                            //ctx.Cache["RoomStore"] = roomData.ToArray();
+                            currentData.Add(device);
+                            added = true;
+                        }                                                           //add the new device
+                    }
+
+                    if (!added)
+                        throw new Exception("Could not find Room ID: " + device.RoomId);
+
+                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    return false;
+                    return ex;
                 }
             }
 
-            return false;
+            return new Exception("none");
         }
 
-        public bool DeleteDevice(Device device)
+        public Exception DeleteDevice(Device device)
         {
             var ctx = HttpContext.Current;
 
@@ -80,23 +103,30 @@ namespace HomeAPI.Services
                 try
                 {
                     var currentData = ((Device[])ctx.Cache[CacheKey]).ToList();
+                    bool found = false;
                     for (int i = 0; i < currentData.Count; i++)
-                        if (device.DeviceName == currentData.ElementAt(i).DeviceName && device.DeviceId == currentData.ElementAt(i).DeviceId) //search for the matching device to delete
+                    {
+                        if (device.DeviceId == currentData.ElementAt(i).DeviceId)
+                        {//search for the matching device to delete
                             currentData.RemoveAt(i);
+                            found = true;
+                        }
+                    }
                     for (int i = 0; i < currentData.Count; i++)
-                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).DeviceName);  //this serves as a check to see if the item was deleted
+                        System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).DeviceId);  //this serves as a check to see if the item was deleted
                     ctx.Cache[CacheKey] = currentData.ToArray();
 
-                    return true;
+                    if (!found)
+                        throw new Exception("Could not find Device: " + device.DeviceName);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    return false;
+                    return ex;
                 }
             }
 
-            return false;
+            return new Exception("none");
         }
     }
 }

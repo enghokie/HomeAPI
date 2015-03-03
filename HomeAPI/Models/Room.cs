@@ -10,6 +10,6 @@ namespace HomeAPI.Models
         public int RoomId { get; set; }
         public string RoomName { get; set; }
         public int HouseId { get; set; }
-        public Device[] MyDevices;
+        public List<Device> MyDevices;
     }
 }

@@ -25,18 +25,22 @@ namespace HomeAPI.Controllers
 
         public HttpResponseMessage Post(House house)
         {
-            this.houseRepository.SaveHouse(house);
+            Exception ex = this.houseRepository.SaveHouse(house);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<House>(System.Net.HttpStatusCode.Created, house);
+            if (ex.Message == "none")
+                response = Request.CreateResponse<House>(System.Net.HttpStatusCode.Created, house);
 
             return response;
         }
 
         public HttpResponseMessage Delete(House house)
         {
-            this.houseRepository.DeleteHouse(house);
+            Exception ex = this.houseRepository.DeleteHouse(house);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<House>(System.Net.HttpStatusCode.OK, house);
+            if (ex.Message == "none")
+                response = Request.CreateResponse<House>(System.Net.HttpStatusCode.OK, house);
 
             return response;
         }

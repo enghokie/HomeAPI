@@ -28,18 +28,22 @@ namespace HomeAPI.Controllers
 
         public HttpResponseMessage Post(Device device)
         {
-            this.deviceRepository.SaveDevice(device);
+            Exception ex = this.deviceRepository.SaveDevice(device);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.Created, device);
+            if (ex.Message == "none")
+                response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.Created, device);
 
             return response;
         }
 
         public HttpResponseMessage Delete(Device device)
         {
-            this.deviceRepository.DeleteDevice(device);
+            Exception ex = this.deviceRepository.DeleteDevice(device);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.OK, device);
+            if (ex.Message == "none")
+                response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.OK, device);
 
             return response;
         }

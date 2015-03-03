@@ -25,18 +25,22 @@ namespace HomeAPI.Controllers
 
         public HttpResponseMessage Post(Room room)
         {
-            this.roomRepository.SaveRoom(room);
+            Exception ex = this.roomRepository.SaveRoom(room);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<Room>(System.Net.HttpStatusCode.Created, room);
+            if (ex.Message == "none")
+                response = Request.CreateResponse<Room>(System.Net.HttpStatusCode.Created, room);
 
             return response;
         }
 
         public HttpResponseMessage Delete(Room room)
         {
-            this.roomRepository.DeleteRoom(room);
+            Exception ex = this.roomRepository.DeleteRoom(room);
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
 
-            var response = Request.CreateResponse<Room>(System.Net.HttpStatusCode.OK, room);
+            if (ex.Message == "none")
+                response = Request.CreateResponse<Room>(System.Net.HttpStatusCode.OK, room);
 
             return response;
         }

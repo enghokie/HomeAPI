@@ -100,34 +100,73 @@
 
 @section scripts{
     <script type="text/javascript">
-        $(function () { $(data).each(function (i, item) {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'api/user',
+                dataType: "json",
+                success: function (data) {
+                    $(data).each(function (i, item) {
+                        $('#users').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')');
+                        alert('Got item ' + item.UserName + ' Got Password ' + item.Password);
+                    })
+                },
+                error: function () {
+                    alert('error handling User GET request');
+                }
+            });
+        });
+
+        $(function () {
             $.ajax({
                 type: 'GET',
                 url: 'api/house',
                 dataType: "json",
-                success: function (item) {
-                    $('#users').append('<ul>' + '<li>' + "House: " + item.HouseName + '</li>' + '</ul>' + '</li>');
-                    alert('got house ' + item.HouseName);
+                success: function (data) {
+                    $(data).each(function (i, item) {
+                        $('#users').append('<ul>' + '<li>' + "House: " + item.HouseName + "  (Id: " + item.HouseId + ')' + '</li>' + '</ul>');
+                        alert('Got House ' + item.HouseName);
+                    })
                 },
                 error: function () {
-                    alert('error handling GET request');
-                }
-            });
-
-            $.ajax({
-                type: 'GET',
-                url: 'api/users',
-                dataType: "json",
-                success: function (item) {
-                    $('#user').append('<li>' + "User: " + item.UserName + "  (Password: " + item.Password + ')');
-                    alert('got item ' + item.UserName + ' got Password ' + item.Password);
-                },
-                error: function () {
-                    alert('error handling GET request');
+                    alert('error handling House GET request');
                 }
             });
         });
-        })
+
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'api/room',
+                dataType: "json",
+                success: function (data) {
+                    $(data).each(function (i, item) {
+                        $('#users').append('<ul>' + '<li>' + '<ul>' + '<li>' + "Room: " + item.RoomName + "  (Id: " + item.RoomId + ')' + '</li>' + '</ul>' + '</li>' + '</ul>');
+                        alert('Got Room ' + item.RoomName);
+                    })
+                },
+                error: function () {
+                    alert('error handling Room GET request');
+                }
+            });
+        });
+
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'api/device',
+                dataType: "json",
+                success: function (data) {
+                    $(data).each(function (i, item) {
+                        $('#users').append('<ul>' + '<li>' + '<ul>' + '<li>' + '<ul>' + '<li>' + "Device: " + item.DeviceName + "  (Id: " + item.DeviceId + ')' + '</li>' + '</ul>' + '</li>' + '</ul>' + '</li>' + '</ul>');
+                        alert('Got Device ' + item.DeviceName);
+                    })
+                },
+                error: function () {
+                    alert('error handling Room GET request');
+                }
+            });
+        });
 
         $('#register').click(function () {
             var datastring = $("#saveUserForm").serialize();
@@ -190,7 +229,7 @@
                dataType: "json",
                success: function (data) {
                    $('#users').append('<ul>' + '<li>' + '<ul>' + '<li>' + '<ul>' + '<li>' + "Device: " + data.DeviceName + "  (Id: " + data.DeviceId + ')' + '</li>' + '</ul>' + '</li>' + '</ul>' + '</li>' + '</ul>');
-                   alert('Posted Deviced ' + data.DeviceName);
+                   alert('Posted Device ' + data.DeviceName);
                },
                error: function () {
                    alert('error handling Device POST request');
