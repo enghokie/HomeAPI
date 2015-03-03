@@ -24,6 +24,16 @@ namespace HomeAPI.Controllers
             return userRepository.GetAllUsers();
         }
 
+        public HttpResponseMessage Patch()
+        {
+            Exception ex = this.userRepository.UpdatHouses();
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
+            if (ex.Message == "updated")
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK);
+
+            return response;
+        }
+
         public HttpResponseMessage Post(User user)
         {
             Exception ex = this.userRepository.SaveUser(user);
@@ -31,6 +41,7 @@ namespace HomeAPI.Controllers
 
             if (ex.Message == "none")
                 response = Request.CreateResponse<User>(System.Net.HttpStatusCode.Created, user);
+            
             return response;
         }
 

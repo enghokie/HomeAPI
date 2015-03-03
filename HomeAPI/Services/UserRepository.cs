@@ -45,6 +45,64 @@ namespace HomeAPI.Services
             };
         }
 
+        public Exception UpdatHouses()
+        {
+            var ctx = HttpContext.Current;
+
+            if (ctx != null)
+            {
+                var currentData = ((User[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
+                bool found = false;
+                bool match = false;
+                bool noMatch = false;
+                HouseRepository houseRepo = new HouseRepository();
+                List<House> houseList = new List<House>();
+                houseList = houseRepo.GetAllHouses().ToList();
+                for (int i = 0; i < currentData.Count; i++)
+                {
+                    for (int j = 0; j < houseList.Count; j++)
+                    {
+                        if (currentData.ElementAt(i).UserName == houseList[j].UserName)
+                        {
+                            if (currentData.ElementAt(i).MyHouses.Count > 0)
+                            {
+                                for (int k = 0; k < currentData.ElementAt(i).MyHouses.Count; k++)
+                                {
+                                    if (currentData.ElementAt(i).MyHouses[k].HouseId == houseList[j].HouseId)
+                                    {
+                                        found = true;
+                                        currentData.ElementAt(i).MyHouses[k] = houseList[j];
+                                    }
+                                }
+                                if (!found)
+                                    currentData.ElementAt(i).MyHouses.Add(houseList[j]);
+                            }
+                            else
+                            {
+                                currentData.ElementAt(i).MyHouses.Add(houseList[j]);
+                            }
+                        }
+
+                        for (int k = 0; k < currentData.ElementAt(i).MyHouses.Count; k++)
+                        {
+                            if (currentData.ElementAt(i).MyHouses[k].HouseId == houseList[j].HouseId)
+                                match = true;
+
+                            if (!match && (k >= currentData.ElementAt(i).MyHouses.Count))
+                            {
+                                noMatch = true;
+                                currentData.ElementAt(i).MyHouses[k] = null;
+                            }
+                        }
+                    }
+                }
+                ctx.Cache[CacheKey] = currentData.ToArray();
+                if (noMatch || found || !found)
+                    return new Exception("updated");
+            }
+            return new Exception("No houses found for the users available");
+        }
+
         public Exception SaveUser(User user)
         {
             var ctx = HttpContext.Current;
@@ -57,14 +115,17 @@ namespace HomeAPI.Services
                     UserRepository tempRepo = new UserRepository();
                     List<User> userList = new List<User>();
                     userList = tempRepo.GetAllUsers().ToList();
+
                     for (int i = 0; i < userList.Count; i++)
                     {
                         if (userList[i].UserName == user.UserName)
-                            throw new Exception("Already have user: " + user.UserName);
+                        {
+                            throw new Exception("Already have User: " + user.UserName);
+                        }
                     }
                     
-                    currentData.Add(user);
-                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+                    userList.Add(user);
+                    ctx.Cache[CacheKey] = userList.ToArray();                //recache the array
                 }
                 catch (Exception ex)
                 {
@@ -87,9 +148,9 @@ namespace HomeAPI.Services
                     var currentData = ((User[])ctx.Cache[CacheKey]).ToList();
                     for (int i = 0; i < currentData.Count; i++)
                     {
-                        if (user.UserName == currentData.ElementAt(i).UserName && user.UserName == currentData.ElementAt(i).UserName) //search for the matching name to delete
+                        if (user.UserName == currentData.ElementAt(i).UserName) //search for the matching name to delete
                         {
-                            if (user.Password == currentData.ElementAt(i).Password && user.Password == currentData.ElementAt(i).Password)
+                            if (user.Password == currentData.ElementAt(i).Password)
                             {
                                 currentData.RemoveAt(i);
                                 found = true;

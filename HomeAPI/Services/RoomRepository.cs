@@ -45,6 +45,64 @@ namespace HomeAPI.Services
             };
         }
 
+        public Exception UpdatDevices()
+        {
+            var ctx = HttpContext.Current;
+
+            if (ctx != null)
+            {
+                var currentData = ((Room[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
+                bool found = false;
+                bool match = false;
+                bool noMatch = false;
+                DeviceRepository deviceRepo = new DeviceRepository();
+                List<Device> deviceList = new List<Device>();
+                deviceList = deviceRepo.GetAllDevices().ToList();
+                for (int i = 0; i < currentData.Count; i++)
+                {
+                    for (int j = 0; j < deviceList.Count; j++)
+                    {
+                        if (currentData.ElementAt(i).RoomId == deviceList[j].RoomId)
+                        {
+                            if (currentData.ElementAt(i).MyDevices.Count > 0)
+                            {
+                                for (int k = 0; k < currentData.ElementAt(i).MyDevices.Count; k++)
+                                {
+                                    if (currentData.ElementAt(i).MyDevices[k].DeviceId == deviceList[j].DeviceId)
+                                    {
+                                        found = true;
+                                        currentData.ElementAt(i).MyDevices[k] = deviceList[j];
+                                    }
+                                }
+                                if (!found)
+                                    currentData.ElementAt(i).MyDevices.Add(deviceList[j]);
+                            }
+                            else
+                            {
+                                currentData.ElementAt(i).MyDevices.Add(deviceList[j]);
+                            }
+                        }
+
+                        for (int k = 0; k < currentData.ElementAt(i).MyDevices.Count; k++)
+                        {
+                            if (currentData.ElementAt(i).MyDevices[k].DeviceId == deviceList[j].DeviceId)
+                                match = true;
+                            
+                            if (!match && (k >= currentData.ElementAt(i).MyDevices.Count))
+                            {
+                                noMatch = true;
+                                currentData.ElementAt(i).MyDevices[k] = null;
+                            }
+                        }
+                    }
+                }
+                ctx.Cache[CacheKey] = currentData.ToArray();
+                if (noMatch || found || !found)
+                    return new Exception("updated");
+            }
+            return new Exception("No devices found for the rooms available");
+        }
+
         public Exception SaveRoom(Room room)
         {
             var ctx = HttpContext.Current;
@@ -65,17 +123,19 @@ namespace HomeAPI.Services
                     for (int i = 0; i < roomList.Count; i++)
                     {
                         if (roomList[i].RoomId == room.RoomId)
-                            throw new Exception("Already have room: " + room.RoomName);
+                        {
+                            roomList[i] = room;
+                            ctx.Cache[CacheKey] = roomList.ToArray();
+                            throw new Exception("Already have Room: " + room.RoomName +
+                            " updating properties");
+                        }
                     }
 
                     for (int i = 0; i < houseList.Count; i++)
                     {
                         if (houseList[i].HouseId == room.HouseId)
                         {
-                            /*houseList[i].MyRooms.Add(room);
-                            tempRepo.DeleteHouse(houseList[i]);
-                            tempRepo.SaveHouse(houseList[i]);*/
-                            currentData.Add(room);
+                            roomList.Add(room);
                             added = true;
                         }                                                           //add the new device
                     }
@@ -83,7 +143,7 @@ namespace HomeAPI.Services
                     if (!added)
                         throw new Exception("Could not find House ID: " + room.HouseId);
 
-                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+                    ctx.Cache[CacheKey] = roomList.ToArray();                //recache the array
                 }
                 catch (Exception ex)
                 {

@@ -33,7 +33,7 @@ namespace HomeAPI.Controllers
 
             if (ex.Message == "none")
                 response = Request.CreateResponse<Device>(System.Net.HttpStatusCode.Created, device);
-
+           
             return response;
         }
 

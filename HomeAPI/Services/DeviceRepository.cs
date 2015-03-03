@@ -65,16 +65,19 @@ namespace HomeAPI.Services
                     for (int i = 0; i < deviceList.Count; i++)
                     {
                         if (deviceList[i].DeviceId == device.DeviceId)
-                            throw new Exception("Already have device: " + device.DeviceName);
+                        {
+                            deviceList[i] = device;
+                            ctx.Cache[CacheKey] = deviceList.ToArray();
+                            throw new Exception("Already have Device: " + device.DeviceName +
+                            " updating properties");
+                        }
                     }
 
                     for (int i = 0; i < roomData.Count; i++)
                     {
                         if (roomData.ElementAt(i).RoomId == device.RoomId)
                         {
-                            //roomData.ElementAt(i).MyDevices.Add(device);
-                            //ctx.Cache["RoomStore"] = roomData.ToArray();
-                            currentData.Add(device);
+                            deviceList.Add(device);
                             added = true;
                         }                                                           //add the new device
                     }
@@ -82,7 +85,7 @@ namespace HomeAPI.Services
                     if (!added)
                         throw new Exception("Could not find Room ID: " + device.RoomId);
 
-                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+                    ctx.Cache[CacheKey] = deviceList.ToArray();                //recache the array
                 }
                 catch (Exception ex)
                 {

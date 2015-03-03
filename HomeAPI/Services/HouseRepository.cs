@@ -45,6 +45,64 @@ namespace HomeAPI.Services
             };
         }
 
+        public Exception UpdatRooms()
+        {
+            var ctx = HttpContext.Current;
+
+            if (ctx != null)
+            {
+                var currentData = ((House[])ctx.Cache[CacheKey]).ToList(); //get a list of the current data
+                bool found = false;
+                bool match = false;
+                bool noMatch = false;
+                RoomRepository roomRepo = new RoomRepository();
+                List<Room> roomList = new List<Room>();
+                roomList = roomRepo.GetAllRooms().ToList();
+                for (int i = 0; i < currentData.Count; i++)
+                {
+                    for (int j = 0; j < roomList.Count; j++)
+                    {
+                        if (currentData.ElementAt(i).HouseId == roomList[j].HouseId)
+                        {
+                            if (currentData.ElementAt(i).MyRooms.Count > 0)
+                            {
+                                for (int k = 0; k < currentData.ElementAt(i).MyRooms.Count; k++)
+                                {
+                                    if (currentData.ElementAt(i).MyRooms[k].RoomId == roomList[j].RoomId)
+                                    {
+                                        found = true;
+                                        currentData.ElementAt(i).MyRooms[k] = roomList[j];
+                                    }
+                                }
+                                if (!found)
+                                    currentData.ElementAt(i).MyRooms.Add(roomList[j]);
+                            }
+                            else
+                            {
+                                currentData.ElementAt(i).MyRooms.Add(roomList[j]);
+                            }
+                        }
+
+                        for (int k = 0; k < currentData.ElementAt(i).MyRooms.Count; k++)
+                        {
+                            if (currentData.ElementAt(i).MyRooms[k].RoomId == roomList[j].RoomId)
+                                match = true;
+
+                            if (!match && (k >= currentData.ElementAt(i).MyRooms.Count))
+                            {
+                                noMatch = true;
+                                currentData.ElementAt(i).MyRooms[k] = null;
+                            }
+                        }
+                    }
+                }
+                ctx.Cache[CacheKey] = currentData.ToArray();
+                if (noMatch || found || !found)
+                    return new Exception("updated");
+            }
+            return new Exception("No rooms found for the houses available");
+        }
+
         public Exception SaveHouse(House house)
         {
             var ctx = HttpContext.Current;
@@ -61,25 +119,30 @@ namespace HomeAPI.Services
                     HouseRepository tempRepo2 = new HouseRepository();
                     List<House> houseList = new List<House>();
                     houseList = tempRepo2.GetAllHouses().ToList();
-                    
+
                     for (int i = 0; i < houseList.Count; i++)
                     {
                         if (houseList[i].HouseId == house.HouseId)
-                            throw new Exception("Already have house: " + house.HouseName);
+                        {
+                            houseList[i] = house;
+                            ctx.Cache[CacheKey] = houseList.ToArray();
+                            throw new Exception("Already have House: " + house.HouseName +
+                            " updating properties");
+                        }
                     }
 
                     for (int i = 0; i < userList.Count; i++)
                     {
                         if (userList[i].UserName == house.UserName)
                         {
-                            currentData.Add(house);
+                            houseList.Add(house);
                             added = true;
                         }                                                           //add the new device
                     }
                     if (!added)
                         throw new Exception("Could not find User: " + house.UserName);
 
-                    ctx.Cache[CacheKey] = currentData.ToArray();                //recache the array
+                    ctx.Cache[CacheKey] = houseList.ToArray();                //recache the array
                 }
                 catch (Exception ex)
                 {
@@ -102,8 +165,8 @@ namespace HomeAPI.Services
                     for (int i = 0; i < currentData.Count; i++)
                         if (house.HouseId == currentData.ElementAt(i).HouseId) //search for the matching name to delete
                         {
-                           currentData.RemoveAt(i);
-                           found = true;
+                            currentData.RemoveAt(i);
+                            found = true;
                         }
                     for (int i = 0; i < currentData.Count; i++)
                         System.Diagnostics.Debug.WriteLine(currentData.ElementAt(i).HouseId);  //this serves as a check to see if the item was deleted

@@ -23,6 +23,16 @@ namespace HomeAPI.Controllers
             return houseRepository.GetAllHouses();
         }
 
+        public HttpResponseMessage Patch()
+        {
+            Exception ex = this.houseRepository.UpdatRooms();
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
+            if (ex.Message == "updated")
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK);
+
+            return response;
+        }
+
         public HttpResponseMessage Post(House house)
         {
             Exception ex = this.houseRepository.SaveHouse(house);
@@ -30,7 +40,7 @@ namespace HomeAPI.Controllers
 
             if (ex.Message == "none")
                 response = Request.CreateResponse<House>(System.Net.HttpStatusCode.Created, house);
-
+            
             return response;
         }
 

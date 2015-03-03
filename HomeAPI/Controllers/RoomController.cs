@@ -23,6 +23,16 @@ namespace HomeAPI.Controllers
             return roomRepository.GetAllRooms();
         }
 
+        public HttpResponseMessage Patch()
+        {
+            Exception ex = this.roomRepository.UpdatDevices();
+            var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
+            if (ex.Message == "updated")
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK);
+
+            return response;
+        }
+
         public HttpResponseMessage Post(Room room)
         {
             Exception ex = this.roomRepository.SaveRoom(room);
@@ -30,7 +40,7 @@ namespace HomeAPI.Controllers
 
             if (ex.Message == "none")
                 response = Request.CreateResponse<Room>(System.Net.HttpStatusCode.Created, room);
-
+            
             return response;
         }
 

@@ -10,6 +10,6 @@ namespace HomeAPI.Models
         public int HouseId { get; set; }
         public string HouseName { get; set; }
         public string UserName { get; set; }
-        public List<Room> MyRooms;
+        public List<Room> MyRooms = new List<Room>();
     }
 }
