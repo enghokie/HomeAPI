@@ -16,7 +16,7 @@
         <h3>Add a New House</h3>
         <p>
             <label for="House Name">House Name:</label>
-            <input type="text" name="HouseName" />
+            <input type="text" name="HouseName"/>
         </p>
         <p>
             <label for="House ID">House ID:</label>
@@ -258,7 +258,8 @@
        });
 
         $('#deleteUser').click(function () {
-            var datastring = $("#deleteUserForm").serialize();
+            var datastring = $('#deleteUserForm').serialize();
+            var datastring2 = $('#users').serialize();
             $.ajax({
                 async: false,
                 type: 'DELETE',
@@ -268,11 +269,7 @@
                 success: function (data) {
                     var str = datastring.split("&");
                     var name = (str[0].split("UserName="));
-                    var password = str[1].split("Password=");
-                    console.log(name[0]);
-                    console.log(password[0]);
-                    document.getElementById(name[0]).remove();
-                    alert('Deleted User: ' + name.toString());
+                    alert('Deleted User: ' + name[1].toString());
                 },
                 error: function () {
                     alert('error handling for User DELETE request');
@@ -290,11 +287,8 @@
                 dataType: "json",
                 success: function (data) {
                     var str = datastring.split("&");
-                    var name = str[0].split("HouseName=");
-                    var id = str[1].split("HouseId=");
-                    console.log(id[0]);
-                    document.getElementById(id[0]).remove();
-                    alert('Deleted House: ' + name.toString());
+                    var name = str[0].split("HouseId=");
+                    alert('Deleted House: ' + name[1].toString());
                 },
                 error: function () {
                     alert('error handling for House DELETE request');
@@ -318,11 +312,8 @@
                 dataType: "json",
                 success: function (data) {
                     var str = datastring.split("&");
-                    var name = str[0].split("RoomName=");
-                    var id = str[1].split("RoomId=");
-                    console.log(id[0]);
-                    document.getElementById(id[0]).remove();
-                    alert("Deleted Room: " + name.toString());
+                    var name = str[0].split("RoomId=");
+                    alert("Deleted Room: " + name[1].toString());
                 },
                 error: function () {
                     alert('error handling for Room DELETE request');
@@ -352,11 +343,8 @@
                 dataType: "json",
                 success: function (data) {
                     var str = datastring.split("&");
-                    var name = str[0].split("DeviceName=")
-                    var id = str[1].split("DeviceId=");
-                    console.log(id[0]);
-                    document.getElementById(id[0]).remove();
-                    alert("Deleted Device: " + name.toString());
+                    var name = str[0].split("DeviceId=")
+                    alert("Deleted Device: " + name[1].toString());
                 },
                 error: function () {
                     alert('error handling for Device DELETE request');
