@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using HomeAPI.Models;
 
-//This class serves as the data storage space. It is just a list of Device items that are regenerated from the cache
+// This class tells the controller how to process the HTTP request and does all the background work
 
 namespace HomeAPI.Services
 {
@@ -20,14 +20,14 @@ namespace HomeAPI.Services
             {
                 if (ctx.Cache[CacheKey] == null)
                 {
-                    var devices = new Device[]{}; //Load the devices from the back end data structure??
+                    var devices = new Device[]{}; //Load the devices from the back end data structure
 
             ctx.Cache[CacheKey] = devices;
                 }
             }
         }
 
-        public Device[] GetAllDevices()
+        public Device[] GetAllDevices() // Gets all the devices stored on the cache
         {
             var ctx = HttpContext.Current;
 
@@ -38,7 +38,7 @@ namespace HomeAPI.Services
 
             return new Device[]
             {
-            new Device
+            new Device                  // If no device is found, returns a placeholder
                 {
                     DeviceId = 0,
                     DeviceName = "Placeholder",
@@ -47,7 +47,7 @@ namespace HomeAPI.Services
             };
         }
 
-        public Exception SaveDevice(Device device)
+        public Exception SaveDevice(Device device)      // Creates and saves a new device
         {
             var ctx = HttpContext.Current;
 
@@ -62,13 +62,13 @@ namespace HomeAPI.Services
                     List<Device> deviceList = new List<Device>();
                     deviceList = tempRepo2.GetAllDevices().ToList();
 
-                    for (int i = 0; i < deviceList.Count; i++)
+                    for (int i = 0; i < deviceList.Count; i++)                  // Checking to make sure device is not already in cache
                     {
                         if (deviceList[i].DeviceId == device.DeviceId)
                         {
                             deviceList[i] = device;
                             ctx.Cache[CacheKey] = deviceList.ToArray();
-                            throw new Exception("Already have Device: " + device.DeviceName +
+                            throw new Exception("Already have Device: " + device.DeviceName +   // If device is found, updates the device information
                             " updating properties");
                         }
                     }
@@ -77,9 +77,10 @@ namespace HomeAPI.Services
                     {
                         if (roomData.ElementAt(i).RoomId == device.RoomId)
                         {
-                            deviceList.Add(device);
-                            added = true;
-                        }                                                           //add the new device
+                            deviceList.Add(device);                                 // add device to the cache of devices
+                            roomData.ElementAt(i).MyDevices.Add(device);            // add device to the rooms devices
+                            added = true; 
+                        }                                                           
                     }
 
                     if (!added)
@@ -97,7 +98,7 @@ namespace HomeAPI.Services
             return new Exception("none");
         }
 
-        public Exception DeleteDevice(Device device)
+        public Exception DeleteDevice(Device device)                // Deletes the specified device
         {
             var ctx = HttpContext.Current;
 

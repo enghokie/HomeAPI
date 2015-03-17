@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using HomeAPI.Models;
 
+// This class tells the controller how to process HTTP commands
+
 namespace HomeAPI.Services
 {
     public class UserRepository
@@ -18,14 +20,14 @@ namespace HomeAPI.Services
             {
                 if (ctx.Cache[CacheKey] == null)
                 {
-                    var users = new User[] { }; //Load the users from the back end data structure??
+                    var users = new User[] { }; //Load the users from the back end data structure
 
                     ctx.Cache[CacheKey] = users;
                 }
             }
         }
 
-        public User[] GetAllUsers()
+        public User[] GetAllUsers()     // Gets all the users from the cache
         {
             var ctx = HttpContext.Current;
 
@@ -45,7 +47,7 @@ namespace HomeAPI.Services
             };
         }
 
-        public Exception UpdatHouses()
+        public Exception UpdatHouses()  // Updates the houses from the house list based on cache
         {
             var ctx = HttpContext.Current;
 
@@ -68,14 +70,14 @@ namespace HomeAPI.Services
                             {
                                 for (int k = 0; k < currentData.ElementAt(i).MyHouses.Count; k++)
                                 {
-                                    if (currentData.ElementAt(i).MyHouses[k].HouseId == houseList[j].HouseId)
+                                    if (currentData.ElementAt(i).MyHouses[k].HouseId == houseList[j].HouseId)       // If the house exist in cache, update list
                                     {
                                         found = true;
                                         currentData.ElementAt(i).MyHouses[k] = houseList[j];
                                     }
                                 }
                                 if (!found)
-                                    currentData.ElementAt(i).MyHouses.Add(houseList[j]);
+                                    currentData.ElementAt(i).MyHouses.Add(houseList[j]); // If it doesn't exist in the user house list, add it
                             }
                             else
                             {
@@ -91,7 +93,7 @@ namespace HomeAPI.Services
                             if (!match && (k >= currentData.ElementAt(i).MyHouses.Count))
                             {
                                 noMatch = true;
-                                currentData.ElementAt(i).MyHouses[k] = null;
+                                currentData.ElementAt(i).MyHouses[k] = null;    // If it was removed from the cache, remove it from the list
                             }
                         }
                     }
@@ -103,7 +105,7 @@ namespace HomeAPI.Services
             return new Exception("No houses found for the users available");
         }
 
-        public Exception SaveUser(User user)
+        public Exception SaveUser(User user)    // Creates and saves a new user
         {
             var ctx = HttpContext.Current;
 
@@ -120,7 +122,7 @@ namespace HomeAPI.Services
                     {
                         if (userList[i].UserName == user.UserName)
                         {
-                            throw new Exception("Already have User: " + user.UserName);
+                            throw new Exception("Already have User: " + user.UserName); // Check if the user already exist
                         }
                     }
                     

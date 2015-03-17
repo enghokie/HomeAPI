@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using HomeAPI.Models;
 
+// This class tells the controller how to process the HTTP commands
+
 namespace HomeAPI.Services
 {
     public class RoomRepository
@@ -18,14 +20,14 @@ namespace HomeAPI.Services
             {
                 if (ctx.Cache[CacheKey] == null)
                 {
-                    var rooms = new Room[] { }; //Load the rooms from the back end data structure??
+                    var rooms = new Room[] { }; //Load the rooms from the back end data structure
 
                     ctx.Cache[CacheKey] = rooms;
                 }
             }
         }
 
-        public Room[] GetAllRooms()
+        public Room[] GetAllRooms()             // Gets all the rooms from the cache
         {
             var ctx = HttpContext.Current;
 
@@ -45,7 +47,7 @@ namespace HomeAPI.Services
             };
         }
 
-        public Exception UpdatDevices()
+        public Exception UpdatDevices()         // Updates the list of devices to add new devices that should be in list or delete ones that do not exist
         {
             var ctx = HttpContext.Current;
 
@@ -62,19 +64,19 @@ namespace HomeAPI.Services
                 {
                     for (int j = 0; j < deviceList.Count; j++)
                     {
-                        if (currentData.ElementAt(i).RoomId == deviceList[j].RoomId)
+                        if (currentData.ElementAt(i).RoomId == deviceList[j].RoomId)           // Check if the device belongs to that room
                         {
                             if (currentData.ElementAt(i).MyDevices.Count > 0)
                             {
                                 for (int k = 0; k < currentData.ElementAt(i).MyDevices.Count; k++)
                                 {
-                                    if (currentData.ElementAt(i).MyDevices[k].DeviceId == deviceList[j].DeviceId)
+                                    if (currentData.ElementAt(i).MyDevices[k].DeviceId == deviceList[j].DeviceId)   // If it already exist, update it
                                     {
                                         found = true;
                                         currentData.ElementAt(i).MyDevices[k] = deviceList[j];
                                     }
                                 }
-                                if (!found)
+                                if (!found)                                                         // If not add it
                                     currentData.ElementAt(i).MyDevices.Add(deviceList[j]);
                             }
                             else
@@ -91,7 +93,7 @@ namespace HomeAPI.Services
                             if (!match && (k >= currentData.ElementAt(i).MyDevices.Count))
                             {
                                 noMatch = true;
-                                currentData.ElementAt(i).MyDevices[k] = null;
+                                currentData.ElementAt(i).MyDevices[k] = null;           // If the device doesn't exist anymore, remove it from the list of devices
                             }
                         }
                     }
@@ -103,7 +105,7 @@ namespace HomeAPI.Services
             return new Exception("No devices found for the rooms available");
         }
 
-        public Exception SaveRoom(Room room)
+        public Exception SaveRoom(Room room)            // Creates and saves new room
         {
             var ctx = HttpContext.Current;
 
@@ -120,7 +122,7 @@ namespace HomeAPI.Services
                     List<Room> roomList = new List<Room>();
                     roomList = tempRepo2.GetAllRooms().ToList();
 
-                    for (int i = 0; i < roomList.Count; i++)
+                    for (int i = 0; i < roomList.Count; i++)            // If room already exist, update it
                     {
                         if (roomList[i].RoomId == room.RoomId)
                         {

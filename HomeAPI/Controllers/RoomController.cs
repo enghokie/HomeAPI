@@ -18,12 +18,12 @@ namespace HomeAPI.Controllers
             this.roomRepository = new RoomRepository();
         } 
 
-        public Room[] Get()
+        public Room[] Get()                             // HTTP GET - gets information about the room
         {
             return roomRepository.GetAllRooms();
         }
 
-        public HttpResponseMessage Patch()
+        public HttpResponseMessage Patch()                      // HTTP PATCH - updates information about the room
         {
             Exception ex = this.roomRepository.UpdatDevices();
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
@@ -33,7 +33,7 @@ namespace HomeAPI.Controllers
             return response;
         }
 
-        public HttpResponseMessage Post(Room room)
+        public HttpResponseMessage Post(Room room)                  // HTTP POST - posts a new room
         {
             Exception ex = this.roomRepository.SaveRoom(room);
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
@@ -44,7 +44,7 @@ namespace HomeAPI.Controllers
             return response;
         }
 
-        public HttpResponseMessage Delete(Room room)
+        public HttpResponseMessage Delete(Room room)                // HTTP DELETE - deletes a room
         {
             Exception ex = this.roomRepository.DeleteRoom(room);
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);

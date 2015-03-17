@@ -19,12 +19,12 @@ namespace HomeAPI.Controllers
             this.userRepository = new UserRepository();
         }
 
-        public User[] Get()
+        public User[] Get()                             // HTTP GET - gets information about user
         {
             return userRepository.GetAllUsers();
         }
 
-        public HttpResponseMessage Patch()
+        public HttpResponseMessage Patch()                      // HTTP PATCH - updates information about the user
         {
             Exception ex = this.userRepository.UpdatHouses();
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
@@ -34,7 +34,7 @@ namespace HomeAPI.Controllers
             return response;
         }
 
-        public HttpResponseMessage Post(User user)
+        public HttpResponseMessage Post(User user)              // HTTP POST - posts a new user
         {
             Exception ex = this.userRepository.SaveUser(user);
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
@@ -45,7 +45,7 @@ namespace HomeAPI.Controllers
             return response;
         }
 
-        public HttpResponseMessage Delete(User user)
+        public HttpResponseMessage Delete(User user)                // HTTP DELETE - deletes a user
         {
             Exception ex = this.userRepository.DeleteUser(user);
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);

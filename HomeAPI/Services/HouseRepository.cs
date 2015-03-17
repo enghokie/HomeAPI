@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using HomeAPI.Models;
 
+// This class tells the controller how to process the HTTP verbs
+
 namespace HomeAPI.Services
 {
     public class HouseRepository
@@ -18,14 +20,14 @@ namespace HomeAPI.Services
             {
                 if (ctx.Cache[CacheKey] == null)
                 {
-                    var houses = new House[] { }; //Load the houses from the back end data structure??
+                    var houses = new House[] { }; //Load the houses from the back end data structure
 
                     ctx.Cache[CacheKey] = houses;
                 }
             }
         }
 
-        public House[] GetAllHouses()
+        public House[] GetAllHouses()               // Gets all the houses stored in the cache
         {
             var ctx = HttpContext.Current;
 
@@ -45,7 +47,7 @@ namespace HomeAPI.Services
             };
         }
 
-        public Exception UpdatRooms()
+        public Exception UpdatRooms()               // Finds any rooms that should belong to the house
         {
             var ctx = HttpContext.Current;
 
@@ -62,11 +64,11 @@ namespace HomeAPI.Services
                 {
                     for (int j = 0; j < roomList.Count; j++)
                     {
-                        if (currentData.ElementAt(i).HouseId == roomList[j].HouseId)
+                        if (currentData.ElementAt(i).HouseId == roomList[j].HouseId)    // Checking if the room belongs to the house
                         {
                             if (currentData.ElementAt(i).MyRooms.Count > 0)
                             {
-                                for (int k = 0; k < currentData.ElementAt(i).MyRooms.Count; k++)
+                                for (int k = 0; k < currentData.ElementAt(i).MyRooms.Count; k++)        // Making sure the room is not already there
                                 {
                                     if (currentData.ElementAt(i).MyRooms[k].RoomId == roomList[j].RoomId)
                                     {
@@ -75,7 +77,7 @@ namespace HomeAPI.Services
                                     }
                                 }
                                 if (!found)
-                                    currentData.ElementAt(i).MyRooms.Add(roomList[j]);
+                                    currentData.ElementAt(i).MyRooms.Add(roomList[j]);          // If it is not, add it to the house room list
                             }
                             else
                             {
@@ -91,7 +93,7 @@ namespace HomeAPI.Services
                             if (!match && (k >= currentData.ElementAt(i).MyRooms.Count))
                             {
                                 noMatch = true;
-                                currentData.ElementAt(i).MyRooms[k] = null;
+                                currentData.ElementAt(i).MyRooms[k] = null;     // If the room doesn't exist anymore, delete it from the list of rooms
                             }
                         }
                     }
@@ -126,7 +128,7 @@ namespace HomeAPI.Services
                         {
                             houseList[i] = house;
                             ctx.Cache[CacheKey] = houseList.ToArray();
-                            throw new Exception("Already have House: " + house.HouseName +
+                            throw new Exception("Already have House: " + house.HouseName +      // Check if the house is already there, if so then update it
                             " updating properties");
                         }
                     }
@@ -137,7 +139,7 @@ namespace HomeAPI.Services
                         {
                             houseList.Add(house);
                             added = true;
-                        }                                                           //add the new device
+                        }                                                           //add the new house
                     }
                     if (!added)
                         throw new Exception("Could not find User: " + house.UserName);

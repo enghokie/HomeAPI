@@ -18,12 +18,12 @@ namespace HomeAPI.Controllers
             this.houseRepository = new HouseRepository();
         } 
 
-        public House[] Get()
+        public House[] Get()                        // HTTP GET - gets information about house
         {
             return houseRepository.GetAllHouses();
         }
 
-        public HttpResponseMessage Patch()
+        public HttpResponseMessage Patch()                      // HTTP PATCH - updates information about the house
         {
             Exception ex = this.houseRepository.UpdatRooms();
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
@@ -33,7 +33,7 @@ namespace HomeAPI.Controllers
             return response;
         }
 
-        public HttpResponseMessage Post(House house)
+        public HttpResponseMessage Post(House house)                // HTTP POST - posts a new house
         {
             Exception ex = this.houseRepository.SaveHouse(house);
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
@@ -44,7 +44,7 @@ namespace HomeAPI.Controllers
             return response;
         }
 
-        public HttpResponseMessage Delete(House house)
+        public HttpResponseMessage Delete(House house)              // HTTP DELETE - deletes a house
         {
             Exception ex = this.houseRepository.DeleteHouse(house);
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotAcceptable, ex);
