@@ -84,7 +84,7 @@ namespace HomeAPI.Services
                                 currentData.ElementAt(i).MyRooms.Add(roomList[j]);
                             }
                         }
-
+                        
                         for (int k = 0; k < currentData.ElementAt(i).MyRooms.Count; k++)
                         {
                             if (currentData.ElementAt(i).MyRooms[k].RoomId == roomList[j].RoomId)
@@ -92,11 +92,16 @@ namespace HomeAPI.Services
 
                             if (!match && (k >= currentData.ElementAt(i).MyRooms.Count))
                             {
-                                noMatch = true;
-                                currentData.ElementAt(i).MyRooms[k] = null;     // If the room doesn't exist anymore, delete it from the list of rooms
+                               noMatch = true;
+                               currentData.ElementAt(i).MyRooms[k] = null;     // If the room doesn't exist anymore, delete it from the list of rooms
                             }
                         }
                     }
+
+                    if ((roomList.Count == 0) && currentData.ElementAt(i).MyRooms.Count > 0)    // If there are no rooms in cache, but rooms in list delete them
+                        for (int k = 0; k < currentData.ElementAt(i).MyRooms.Count; k++)
+                            currentData.ElementAt(i).MyRooms[k] = null;
+
                 }
                 ctx.Cache[CacheKey] = currentData.ToArray();
                 if (noMatch || found || !found)

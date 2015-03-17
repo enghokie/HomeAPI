@@ -97,6 +97,10 @@ namespace HomeAPI.Services
                             }
                         }
                     }
+
+                    if ((houseList.Count == 0) && currentData.ElementAt(i).MyHouses.Count > 0)  // If there are no houses in cache, but houses in list, delete them
+                        for (int k = 0; k < currentData.ElementAt(i).MyHouses.Count; k++)
+                            currentData.ElementAt(i).MyHouses[k] = null;
                 }
                 ctx.Cache[CacheKey] = currentData.ToArray();
                 if (noMatch || found || !found)

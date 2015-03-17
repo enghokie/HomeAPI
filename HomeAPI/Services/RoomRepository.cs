@@ -97,6 +97,10 @@ namespace HomeAPI.Services
                             }
                         }
                     }
+
+                    if ((deviceList.Count == 0) && currentData.ElementAt(i).MyDevices.Count > 0)    // If there are no devices in cache but devices in list, delete them
+                        for (int k = 0; k < currentData.ElementAt(i).MyDevices.Count; k++)
+                            currentData.ElementAt(i).MyDevices[k] = null;
                 }
                 ctx.Cache[CacheKey] = currentData.ToArray();
                 if (noMatch || found || !found)
