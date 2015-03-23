@@ -25,7 +25,7 @@ namespace HomeAPI.Controllers
 
         public HttpResponseMessage Patch()                      // HTTP PATCH - updates information about the room
         {
-            Exception ex = this.roomRepository.UpdatDevices();
+            Exception ex = this.roomRepository.UpdateDevices();
             var response = Request.CreateErrorResponse(System.Net.HttpStatusCode.NotModified, ex);
             if (ex.Message == "updated")
                 return Request.CreateResponse(System.Net.HttpStatusCode.OK);

@@ -47,7 +47,7 @@ namespace HomeAPI.Services
             };
         }
 
-        public Exception UpdatDevices()         // Updates the list of devices to add new devices that should be in list or delete ones that do not exist
+        public Exception UpdateDevices()         // Updates the list of devices to add new devices that should be in list or delete ones that do not exist
         {
             var ctx = HttpContext.Current;
 
